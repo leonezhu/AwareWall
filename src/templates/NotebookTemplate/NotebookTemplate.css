@@ -1,0 +1,245 @@
+/* 作业本模板样式 */
+.notebook-template {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+  padding: 20px;
+  font-family: 'Courier New', 'SimSun', monospace;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  animation: fadeIn 0.8s ease-in;
+}
+
+.notebook-paper {
+  width: 100%;
+  max-width: 800px;
+  min-height: 90vh;
+  background: #ffffff;
+  position: relative;
+  box-shadow: 
+    0 0 20px rgba(0, 0, 0, 0.1),
+    inset 0 0 120px rgba(0, 0, 0, 0.02);
+  border-radius: 2px;
+  
+  /* 纸张纹理效果 */
+  background-image: 
+    /* 左侧红线 */
+    linear-gradient(to right, #ff6b6b 40px, transparent 40px),
+    /* 横线 */
+    repeating-linear-gradient(
+      transparent,
+      transparent 31px,
+      #e3f2fd 31px,
+      #e3f2fd 32px
+    );
+  
+  /* 页边距 */
+  padding: 60px 60px 40px 80px;
+  margin: 20px;
+  
+  /* 纸张边缘效果 */
+  border: 1px solid #ddd;
+}
+
+/* 左侧装订孔效果 */
+.notebook-paper::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 80px;
+  bottom: 80px;
+  width: 2px;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 40px,
+    #ccc 40px,
+    #ccc 50px
+  );
+}
+
+/* 装订孔 */
+.notebook-paper::after {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 100px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #ddd;
+  box-shadow: 
+    0 80px 0 -2px #fff,
+    0 80px 0 0 #ddd,
+    0 160px 0 -2px #fff,
+    0 160px 0 0 #ddd,
+    0 240px 0 -2px #fff,
+    0 240px 0 0 #ddd;
+}
+
+.notebook-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #333;
+}
+
+.notebook-title {
+  font-size: 2.2rem;
+  color: #2c3e50;
+  margin: 0;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.notebook-date {
+  font-size: 1rem;
+  color: #666;
+  font-style: italic;
+}
+
+.notebook-content {
+  margin-top: 20px;
+}
+
+.motto-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.motto-line {
+  display: flex;
+  align-items: flex-start;
+  min-height: 32px;
+  padding: 8px 0;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.motto-line:hover {
+  background: rgba(33, 150, 243, 0.05);
+  transform: translateX(5px);
+}
+
+.line-number {
+  width: 40px;
+  color: #999;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+  text-align: right;
+  margin-right: 15px;
+}
+
+.motto-text {
+  flex: 1;
+  color: #333;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.current-motto {
+  background: rgba(255, 193, 7, 0.1);
+  border-left: 4px solid #ffc107;
+  padding-left: 16px;
+  margin-left: -20px;
+  border-radius: 0 4px 4px 0;
+}
+
+.current-motto .motto-text {
+  color: #d84315;
+  font-weight: 600;
+}
+
+.current-motto .line-number {
+  color: #ffc107;
+  font-weight: bold;
+}
+
+.notebook-footer {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+  text-align: center;
+}
+
+.page-info {
+  color: #666;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .notebook-template {
+    padding: 10px;
+  }
+  
+  .notebook-paper {
+    margin: 10px;
+    padding: 40px 30px 30px 50px;
+  }
+  
+  .notebook-title {
+    font-size: 1.8rem;
+  }
+  
+  .motto-text {
+    font-size: 1rem;
+  }
+  
+  .notebook-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .notebook-paper {
+    padding: 30px 20px 20px 40px;
+  }
+  
+  .notebook-title {
+    font-size: 1.5rem;
+  }
+  
+  .line-number {
+    width: 30px;
+    margin-right: 10px;
+  }
+  
+  .motto-text {
+    font-size: 0.95rem;
+  }
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 打印样式 */
+@media print {
+  .notebook-template {
+    background: white;
+    padding: 0;
+  }
+  
+  .notebook-paper {
+    box-shadow: none;
+    margin: 0;
+    border: none;
+  }
+}
