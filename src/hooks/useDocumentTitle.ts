@@ -15,5 +15,5 @@ export const useDocumentTitle = (title: string) => {
 
 // 生成动态标题的工具函数
 export const generateDynamicTitle = (motto: string): string => {
-  return `${motto} - 觉察之墙`;
+  return `${motto}`;
 };
